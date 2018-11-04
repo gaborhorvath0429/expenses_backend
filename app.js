@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb://localhost/richbitch', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/richbitch', { useNewUrlParser: true });
 const app = express();
 
 //Middlewares
