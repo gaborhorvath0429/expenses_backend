@@ -13,12 +13,14 @@ module.exports = {
     getAll: (req, res) => {
         Expense.find({}, (e, expenses) => {
             if (e) return res.status(400).send('Getting all expenses failed');
-            mapExpenses = {};
-            expenses.forEach(item => {
-                if (!mapExpenses[item.category]) mapExpenses[item.category] = [];
-                mapExpenses[item.category].push(item.amount);
-            });
-            res.json(mapExpenses);
+            res.json(expenses);
+        })
+    },
+
+    delete: (req, res) => {
+        Expense.findByIdAndDelete(req.params.id, (e) => {
+            if (e) return res.status(400).send('Removing expense failed');
+            res.send('success');
         })
     }
 }

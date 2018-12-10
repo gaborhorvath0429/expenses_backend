@@ -8,5 +8,7 @@ router.route('/')
 router.route('/')
     .post(ExpenseController.create);
 
+router.route('/:id')
+    .delete(ExpenseController.delete);
 
 module.exports = router;
