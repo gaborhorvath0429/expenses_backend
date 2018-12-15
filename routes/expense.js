@@ -3,7 +3,10 @@ const router = require('express-promise-router')();
 const ExpenseController = require('../controllers/expense');
 
 router.route('/')
-    .get(ExpenseController.getAll);
+    .get(ExpenseController.get);
+
+router.route('/statistics')
+    .get(ExpenseController.getStatistics);
 
 router.route('/')
     .post(ExpenseController.create);
